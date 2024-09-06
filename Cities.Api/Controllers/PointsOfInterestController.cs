@@ -127,6 +127,11 @@ namespace PointsOfInterest.API.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (!TryValidateModel(pointOfInterestToPatch))
+            {
+                return BadRequest(ModelState);
+            }
+
             pointOfInterestForStore.Name = pointOfInterestToPatch.Name;
             pointOfInterestForStore.Description = pointOfInterestToPatch.Description;
 
